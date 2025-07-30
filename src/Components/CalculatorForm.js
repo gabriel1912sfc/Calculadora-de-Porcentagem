@@ -1,38 +1,40 @@
 import { useState } from 'react';
 
-function CalculatorForm({ onResultado }) {
-  const [valor, setValor] = useState('');
-  const [porcentagem, setPorcentagem] = useState('');
+function CalculatorForm({ onResult }) {
+  const [value, setValue] = useState('');
+  const [percentage, setPercentage] = useState('');
 
-  const calcular = (e) => {
+  const calculate = (e) => {
     e.preventDefault();
 
-    const v = parseFloat(valor);
-    const p = parseFloat(porcentagem);
+    //convertendo as strings do useState para um float.
+    const v = parseFloat(value);
+    const p = parseFloat(percentage);
 
+    //testa se os valores são NaN. Verifica se os campos são vazios.
     if (isNaN(v) || isNaN(p)) {
-      onResultado('Insira valores válidos.');
+      onResult('Insira valores válidos.');
       return;
     }
 
     const res = (v * p) / 100;
-    onResultado(`${p}% de ${v} é ${res}`);
+    onResult(`${p}% de ${v} é ${res}`);
   };
 
   return (
-    <form onSubmit={calcular}>
+    <form onSubmit={calculate}>
       <label>Qual valor?</label>
       <input
         type="number"
-        value={valor}
-        onChange={(e) => setValor(e.target.value)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
       />
 
       <label>Qual porcentagem?</label>
       <input
         type="number"
-        value={porcentagem}
-        onChange={(e) => setPorcentagem(e.target.value)}
+        value={percentage}
+        onChange={(e) => setPercentage(e.target.value)}
       />
 
       <button type="submit">Calcular</button>

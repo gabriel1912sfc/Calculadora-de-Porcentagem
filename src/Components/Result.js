@@ -1,5 +1,5 @@
-function Result({ resultado: result }) {
-  return result ? <div className="resultado">{result}</div> : null;
+function Result({ result }) {
+  return result ? <div className="result">{result}</div> : null;
 }
 
 export default Result;
