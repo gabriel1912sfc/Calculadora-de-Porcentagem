@@ -1,7 +1,15 @@
-function Header({children}){
+/* eslint-disable array-callback-return */
+function Header({items, activeId }){
   return (
     <div>
-      <h1>{children}</h1>
+      {items.map((item) => {
+        if(item.id === activeId){
+          return(
+            <h1>Calculadora de {item.label}</h1>
+          )
+        }
+      })}
+    
     </div>
   )
 }

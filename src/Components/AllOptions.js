@@ -1,10 +1,14 @@
-function AllOptions({items}){
+function AllOptions({items, onSelect, onResult}){
   return (
     <div class="nav-wrapper">
       <nav class="nav-style">
-      {items.map((items) => {
+        {items.map((items) => {
         return(
-          <button key={items.id}>
+          <button key={items.id} onClick={()=> {
+            onSelect(items.id);
+            onResult("");
+            }
+            }>
             {items.label}
           </button>)
         })}
